@@ -14,9 +14,10 @@ class Node:
         self.left = None
         self.right = None
         self.data = None
+        self.isleaf = False
         
     def printnode(self):
-        print('Depth',self.depth,'feature',self.feature,'condition',self.condition,'featurevalue',self.value,'classdistr',self.clsdistr)
+        print('Depth',self.depth,'feature',self.feature,'condition',self.condition,'featurevalue',self.value,'classdistr',self.clsdistr,'isleaf',self.isleaf)
         
     def __str__(self, depth=0):
         ret = ""
