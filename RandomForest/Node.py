@@ -13,7 +13,7 @@ class Node:
         self.clsdistr = clsdistr
         self.left = None
         self.right = None
-        self.data = None
+        #self.data = None
         self.isleaf = False
         
     def printnode(self):
