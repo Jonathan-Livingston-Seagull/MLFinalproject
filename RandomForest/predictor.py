@@ -11,7 +11,8 @@ import csv
 
 #read data for prediction(validation/Testing)
 def read_data():
-    input_data = genfromtxt('../data/Test_random.csv',delimiter = ',')
+    #input_data = genfromtxt('../data/Test_random.csv',delimiter = ',')
+    input_data = genfromtxt('../data/Validation_Random_new.csv',delimiter = ';')
     #input_data = genfromtxt('sub_data1.csv',delimiter = ',')
     return input_data
 
@@ -87,7 +88,7 @@ def visconfmatrix(confusion_matrix):
         for j in i:
             tmp_arr.append(float(j)/float(a))
         norm_conf.append(tmp_arr)
-    plt.clf()
+    #plt.clf()
     fig = plt.figure()
     ax = fig.add_subplot(111)
     res = ax.imshow(array(norm_conf), cmap=cm.jet, interpolation='nearest')
@@ -102,14 +103,15 @@ def visconfmatrix(confusion_matrix):
 def findaccuracy(conf_matrix):
     return (np.sum(conf_matrix.diagonal())/np.sum(conf_matrix))*100
 
-number_of_trees = 5
+number_of_trees = 25
 prediction_array = []
 for i in range(number_of_trees): 
     #with open('../forest/Trees_featuredivideby2/tree_feature_sqrt_featuredivideby2_'+str(i)+'.pickle','rb') as f:
-    with open('../forest/Trees_20/tree_feature_sqrt_depth20'+str(i)+'.pickle','rb') as f:
+    with open('../forest/Tree_d30_fdiv2/tree_d30'+str(i)+'.pickle','rb') as f:
         rootnode = pk.load(f)
         input_data = read_data()
-        shape = input_data.shape      
+        shape = input_data.shape 
+        print(shape)     
         predicted_matrix =  np.zeros(shape=(shape[0],shape[1]+5))
         for i in range(shape[0]):
             predicted_matrix[i] = predict(rootnode,input_data[i])

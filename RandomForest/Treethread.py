@@ -28,10 +28,10 @@ class Treethread (threading.Thread):
         randomtree.create(self.data, self.treeobject)
         print ("construction over " + self.name)
 
-input_file = '../data/input_data_pure.csv'
-output_object = '../forest/Trees_featuredivideby2/tree_feature_sqrt_featuredivideby2_'
+input_file = '../data/input_data_pure_random.csv'
+output_object = '../forest/Tree_d30_fdiv2/tree_d30'
 number_of_trees = 25
-depth_of_trees = float('inf')
+depth_of_trees = 30
 
 def read_data():
     input_data = genfromtxt(input_file,delimiter = ';')
@@ -46,8 +46,6 @@ for i in range(number_of_trees):
     sub_data = input_data[np.random.choice(input_data.shape[0],subsize,replace=True),:]
     tree_thread = Treethread(i, "Thread-"+ str(i),depth_of_trees,output_object+str(i)+'.pickle',sub_data)
     thread_pool.append(tree_thread)
-    
-
 for tree_thread in thread_pool:
     tree_thread.start()    
 
