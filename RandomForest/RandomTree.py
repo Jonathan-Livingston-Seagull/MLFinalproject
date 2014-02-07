@@ -52,10 +52,16 @@ class Randomtree:
         feature_condition = ''
         feature_value = None
         feature_dimension = None
-        features = np.random.choice(data.shape[1]-1,data.shape[1]/2,replace=False)
+        randomfeatureseed = data.shape[1]/4
+        #randomfeatureseed = data.shape[1]/2
+        features = np.random.choice(data.shape[1]-1,randomfeatureseed,replace=False)
         for feature in features:
             data_column_given_feature = np.unique(data[:,feature])
-            featurevalues = np.random.choice(data_column_given_feature,int(np.sqrt(data_column_given_feature.shape[0])),replace = False)
+            #randomfeaturevaluesseed = int(np.sqrt(data_column_given_feature.shape[0]))
+            randomfeaturevaluesseed = data_column_given_feature.shape[0]/4
+            #randomfeaturevaluesseed = int(np.sqrt(np.sqrt(data_column_given_feature.shape[0])))
+            #print('seed is',randomfeaturevaluesseed)
+            featurevalues = np.random.choice(data_column_given_feature,randomfeaturevaluesseed,replace = False)
             for featurevalue in featurevalues:
                 [gini_split,split1,split2] = self.split(data, data[:,feature] <= featurevalue)
                 if(gini_split < gini_feature_selector):

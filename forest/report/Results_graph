@@ -1,0 +1,74 @@
+Scenario 1: depth max , feature values square root
+Data_Seperation       Prediction_Accuracy
+
+scenario 2 :depth max , feature values double square root
+Data_Seperation       Prediction_Accuracy
+
+scenario 3 :depth 10 , feature values  square root
+Data_Seperation       Prediction_Accuracy
+
+scenario 4 :data sepeartion 15 , feature values  square root
+depth       Prediction_Accuracy
+
+scenario 5: depth 30 data seperation 15 feature square root
+one subject out debora
+accuracy
+number of trees 25
+data division 10
+
+scenario 6: depth 30 data seperation 15 feature square root
+one subject partly out debora
+adding 34,00 gives 98.8
+adding 24,00 gives 98.04
+adding only 2000 gives 97
+adding only 1500 gives 89
+adding only 1000 gives 87
+accuracy only 200 gives 76
+
+number of trees 25
+data division 10
+
+
+scenario 7: depth 30 data seperation 15 no of trees 25 
+feature   accuracy
+
+
+graph1 :
+trainig:1,20,000
+testing:40,000 
+depth:maximum  feature:square root  data seperation:15  feature chosen:4
+Trees:[1,5,10,15,20,25]
+Accuracy:[93.3,97.24,98.21,98.63,98.91,99.07]
+ 
+graph2:
+trainig:1,20,000
+testing:40,000 
+feature:square root  data seperation:15  feature chosen:4  number of trees:25
+
+depth: [5,10,15,20,25,30]
+Accurycy:[87.48,96.24,98.51,98.88,98.98,99.09]
+
+graph3:
+trainig:1,20,000
+testing:40,000 
+depth:dmax  data seperation:15  feature chosen:4  number of trees:25
+
+feature: [sqrt,doublesqrt,triplesqrt,divideby4]
+Accurycy:[99.07,99.30,99.22,99.99]
+
+graph4:
+trainig:1,20,000
+testing:40,000 
+depth:dmax    feature chosen:4  number of trees:25
+
+data_division: [1,5,10,15,20,25,30,35,40]
+Accuracy:[99.62,99.38,99.17,99.07,98.93,98.81,98.89]
+
+graph5:
+ 
+depth:dmax    feature chosen:4  number of trees:25
+
+one_subject_data_training: [0,200,500,1000,2000,3500]
+Accuracy:[60,76,85,87,97]
+
+ 

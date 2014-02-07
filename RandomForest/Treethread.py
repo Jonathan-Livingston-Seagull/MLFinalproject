@@ -6,6 +6,7 @@ Created on 30-Dec-2013
 #!/usr/bin/python
 
 import threading
+import datetime
 import numpy as np
 import pickle as pk
 from numpy import genfromtxt
@@ -27,20 +28,27 @@ class Treethread (threading.Thread):
         randomtree = Randomtree(self.depth)
         randomtree.create(self.data, self.treeobject)
         print ("construction over " + self.name)
+        current_time = datetime.datetime.now().time()
+        print('end time',current_time)
 
-input_file = '../data/input_data_pure_random.csv'
-output_object = '../forest/Tree_d30_fdiv2/tree_d30'
+#input_file = '../data/input_without_debora.csv'
+input_file = '../data/input_new_latest.csv'
+#input_file = '../data/feature12.csv'
+#output_object = '../forest/test/tree_d8'
+output_object = '../forest/report/scenario_9/div15data_div4feat_div4_d30_debora/tree_d30'
 number_of_trees = 25
+#depth_of_trees = float('inf')
 depth_of_trees = 30
-
 def read_data():
     input_data = genfromtxt(input_file,delimiter = ';')
     return input_data
 
 # Create new threads
+current_time = datetime.datetime.now().time()
+print('start time',current_time)
 input_data = read_data()
-subsize = input_data.shape[0]/3
-#subsize = input_data.shape[0]/7333
+#subsize = input_data.shape[0]
+subsize = input_data.shape[0]/15
 thread_pool = []
 for i in range(number_of_trees):
     sub_data = input_data[np.random.choice(input_data.shape[0],subsize,replace=True),:]

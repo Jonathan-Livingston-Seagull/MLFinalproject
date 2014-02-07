@@ -11,9 +11,10 @@ import csv
 
 #read data for prediction(validation/Testing)
 def read_data():
-    #input_data = genfromtxt('../data/Test_random.csv',delimiter = ',')
-    input_data = genfromtxt('../data/Validation_Random_new.csv',delimiter = ';')
-    #input_data = genfromtxt('sub_data1.csv',delimiter = ',')
+    #input_data = genfromtxt('../data/test_new_latest.csv',delimiter = ';')
+    input_data = genfromtxt('../data/debora.csv',delimiter = ';')
+    #input_data = genfromtxt('../data/Validation_Random_new.csv',delimiter = ';')
+    #input_data = genfromtxt('../data/sample.csv',delimiter = ';')
     return input_data
 
 #split data based on condition
@@ -107,7 +108,10 @@ number_of_trees = 25
 prediction_array = []
 for i in range(number_of_trees): 
     #with open('../forest/Trees_featuredivideby2/tree_feature_sqrt_featuredivideby2_'+str(i)+'.pickle','rb') as f:
-    with open('../forest/Tree_d30_fdiv2/tree_d30'+str(i)+'.pickle','rb') as f:
+    print('finished',i)
+    #with open('../forest/report/div40data_div4feat_sqrfeatvalues/tree_dmax'+str(i)+'.pickle','rb') as f:
+    with open('../forest/report/scenario_6/div15data_div4feat_sqrfeatvalues_d30_34000/tree_d30'+str(i)+'.pickle','rb') as f:
+
         rootnode = pk.load(f)
         input_data = read_data()
         shape = input_data.shape 
@@ -118,7 +122,8 @@ for i in range(number_of_trees):
         prediction_shape = predicted_matrix.shape
         print(predicted_matrix.shape)
         prediction_array.append(predicted_matrix[:,[0,1,2,3,4,prediction_shape[1]-1]])
-prediction_final = np.divide(np.sum(prediction_array,axis=0),number_of_trees)    
+prediction_final = np.divide(np.sum(prediction_array,axis=0),number_of_trees)
+#print(prediction_final)    
 confusion_matrix = createconfmat(prediction_final,5)
 print(confusion_matrix)
 visconfmatrix(confusion_matrix)
